@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-c026ba95eb04958101434c10a4a09058775d2852",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/helloWord.sol": "project/contracts/helloWord.sol",
+    "contracts/SimpleStorage.sol": "project/contracts/SimpleStorage.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/helloWord.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\n\r\npragma solidity >=0.7.0 <0.9.0;\r\n\r\ncontract helloWorld{\r\n    string private message;\r\n\r\n\r\nfunction get() external view returns (string memory){\r\n    return message;\r\n}\r\n\r\nfunction set(string memory _message) external{\r\n    message = _message;\r\n}\r\n}"
+      },
+      "project/contracts/SimpleStorage.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.28;\n\ncontract SimpleStorage {\n    uint256 private storedValue;\n\n    function set(uint256 value) public {\n        storedValue = value;\n    }\n\n    function get() public view returns (uint256) {\n        return storedValue;\n    }\n}\n"
+      }
+    }
+  }
+}
