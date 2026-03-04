@@ -1,0 +1,75 @@
+# -----------------------------
+# Node modules
+# -----------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -----------------------------
+# Hardhat artifacts & cache
+# -----------------------------
+artifacts/
+cache/
+typechain-types/
+
+# -----------------------------
+# Coverage
+# -----------------------------
+coverage/
+coverage.json
+
+# -----------------------------
+# TypeScript
+# -----------------------------
+dist/
+build/
+*.tsbuildinfo
+
+# -----------------------------
+# Environment files (CRITICAL)
+# -----------------------------
+.env
+.env.*
+!.env.example
+
+# -----------------------------
+# Logs
+# -----------------------------
+logs/
+*.log
+
+# -----------------------------
+# OS files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# IDE files
+# -----------------------------
+.vscode/
+.idea/
+*.swp
+
+# -----------------------------
+# Hardhat local network
+# -----------------------------
+hardhat-network.json
+
+# -----------------------------
+# Foundry (if mixed setup)
+# -----------------------------
+out/
+
+# -----------------------------
+# Ignition deployments (Hardhat 3+)
+# -----------------------------
+ignition/deployments/
+
+# -----------------------------
+# Misc
+# -----------------------------
+tmp/
+.temp/
