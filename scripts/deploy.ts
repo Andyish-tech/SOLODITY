@@ -1,22 +1,46 @@
 import hre from "hardhat";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename)
 
 async function main(){
   const {viem} = await hre.network.connect();
-  const contract = await viem.deployContract("helloWorld");
-  
-  console.log("contract deployed to:", contract.address);
+  const contract = await viem.deployContract("HelloWorld");
 
-//storing the value as an array
+  console.log("Contract deployed to:", contract.address);
 
-  const hash = await contract.write.set(['Armand'])
-  const publicClient = await viem.getPublicClient();
-  await publicClient.waitForTransactionReceipt({hash})
+  const initial = await contract.read.get();
+  console.log("Initial message:", initial);
 
-//reading or displaying
+  const artifactPath = path.join(
+    __dirname,
+    "artifacts",
+    "contracts",
+    "HelloWorld.sol",
+    "HelloWorld.json"
+  );
 
-  const message = await contract.read.get();
-  console.log("initial Message",message);
+  const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf-8"));
+  const abi = artifact.abi;
 
+  const outDir = path.join(__dirname, "..", "frontend", "src", "contracts")
+  fs.mkdirSync(outDir, {recursive: true});
+
+  fs.writeFileSync(
+    path.join(outDir, "HelloWorld.json"),
+    JSON.stringify(
+      {
+        address: contract.address,
+        abi: abi
+      },
+      null,
+      2
+    )
+  );
+  console.log("Frontend contract file created");
 }
 
 main().catch(console.error);
