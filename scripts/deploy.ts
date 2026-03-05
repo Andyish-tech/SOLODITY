@@ -17,9 +17,34 @@ async function main(){
 
   const artifactPath = path.join(
     __dirname,
+    "..",
+    "artifacts",
+    "contracts",
+    "HelloWorld.sol",
+    "HelloWorld.json"
   );
 
+  const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf-8"))
+  const abi = artifact.abi;
+
+  //save to the frontend
+
+  const outDir = path.join(__dirname, "..", "frontend", "src", "contracts")
+  fs.mkdirSync(outDir, {recursive:true})
   
+  fs.writeFileSync(
+    path.join(outDir, "HelloWorld"),
+    JSON.stringify(
+      {
+        address: contract.address,
+        abi: abi
+      },
+      null,
+      2
+    )
+  )
+
+  console.log("Frontend file created")
 }
 
 main().catch(console.error);
