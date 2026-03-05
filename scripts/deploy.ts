@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename)
 
 async function main(){
   const {viem} = await hre.network.connect();
-  const contract = await viem.deployContract("HelloWorld");
+  const contract = await viem.deployContract("helloWorld");
 
   console.log("Contract deployed to:", contract.address);
 
@@ -33,7 +33,7 @@ async function main(){
   fs.mkdirSync(outDir, {recursive:true})
   
   fs.writeFileSync(
-    path.join(outDir, "HelloWorld"),
+    path.join(outDir, "HelloWorld.json"),
     JSON.stringify(
       {
         address: contract.address,
