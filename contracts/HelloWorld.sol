@@ -5,6 +5,10 @@ pragma solidity >=0.7.0 <0.9.0;
 contract helloWorld{
     string private message;
 
+    constructor(){
+        message = "Hello World";
+    }
+
 
 function get() external view returns (string memory){
     return message;
